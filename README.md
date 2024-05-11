@@ -54,19 +54,20 @@ The folder are divided into 7 parts :-
   It consists of 3 files :- 
 
   1. AuthRoutes for Signup , Login and Logout :-
-  2.                                             a.router.post("/login" , loginUser)  ; //calls when user will try to login 
+     
+                                                 a.router.post("/login" , loginUser)  ; //calls when user will try to login 
 
                                                  b.router.post("/signup", singupUser) ; //calls when user will try to signup 
 
                                                  c.router.post("/logout", logoutUser) ; //calls when user will logout
      
-  3. messageRoutes for Sending and receiving messages :-
+  2. messageRoutes for Sending and receiving messages :-
      
                                                          a. router.get("/:id", protectRoute, getMessages)  ;//calls when the user will get any messages from other users
      
                                                          b. router.post("/send/:id", protectRoute, sendMessage)  ;//calls when the user will send any message to other user
  
-  5. UserRoutes for collecting all the users and displaying their name at the side :-
+  3. UserRoutes for collecting all the users and displaying their name at the side :-
      
                                                          a.  router.get("/", protectRoute, getUsersForSidebar);//calls automatically to get the users from DB , to reflect at the sidebar
 

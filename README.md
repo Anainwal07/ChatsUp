@@ -17,7 +17,10 @@ The folder are divided into 7 parts :-
 7. Socket :- To ensure real time communication bw two users .
 
 
-1. Server.js : 
+1. Server.js :
+   It is the main file of the full backend folder as it is the first file to run whenever we start our backend server .
+   All the functions are requested to execute from the server.js file itself . 
+   It also ensures that server is running fine on out destined PORT 
 
         const app = express() ; 
       
@@ -43,9 +46,7 @@ The folder are divided into 7 parts :-
         })
 
   
-  It is the main file of the full backend folder as it is the first file to run whenever we start our backend server .
-  All the functions are requested to execute from the server.js file itself . 
-  It also ensures that server is running fine on out destined PORT 
+
 
 
 
@@ -93,15 +94,16 @@ The folder are divided into 7 parts :-
                                                             a . export const getSideBarUsers () 
 
 4. Middleware :
+    It acts as a wall or bridge bw the routes and the controllers to ensure safety and data Integrity . 
+    It consists of a single file i.e protectRoute that will get executed before performing any action like sending or recieving message .
+    It will check if the user is specified to perfrom such actions by checking the validation of hte tokens received from the cookeies .
 
         const protectRoutes = async() => {
           //validate the user before sending or receiving any message .
         }
         export default protectRoute ; 
     
-    It acts as a wall or bridge bw the routes and the controllers to ensure safety and data Integrity . 
-    It consists of a single file i.e protectRoute that will get executed before performing any action like sending or recieving message .
-    It will check if the user is specified to perfrom such actions by checking the validation of hte tokens received from the cookeies .
+
 
 
 

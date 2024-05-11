@@ -16,6 +16,7 @@ The folder are divided into 7 parts :-
 6. Utils :- To generate tokens
 7. Socket :- To ensure real time communication bw two users .
 
+Explanation of the code and file structure :
 
 1. Server.js :
    It is the main file of the full backend folder as it is the first file to run whenever we start our backend server .

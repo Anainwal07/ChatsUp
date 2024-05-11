@@ -1,0 +1,108 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "ChatsUp",
+    "collectionId": "d9683828-814b-40c4-a440-6890236c2f14",
+    "dateExported": "2024-05-11T13:13:20.246Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "8ee1411b-9f9a-4d01-a363-fce3d520503f",
+            "name": "authRoutes",
+            "containerId": "",
+            "created": "2024-05-11T13:05:50.538Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "ce9524fe-6995-4dc6-b044-18b408ec9a84",
+            "name": "userRoutes",
+            "containerId": "",
+            "created": "2024-05-11T13:09:12.226Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "8bd2a295-523a-4e17-9815-505c9c97bcf1",
+            "name": "messageRoutes",
+            "containerId": "",
+            "created": "2024-05-11T13:10:40.850Z",
+            "sortNum": 40000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "1c1106dd-ec61-40be-92da-d3eb012399cf",
+            "colId": "d9683828-814b-40c4-a440-6890236c2f14",
+            "containerId": "8ee1411b-9f9a-4d01-a363-fce3d520503f",
+            "name": "Login",
+            "url": "http://localhost:5000/api/auth/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-05-11T13:06:05.561Z",
+            "modified": "2024-05-11T13:07:14.450Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"Raja123\", \n  \"password\": \"123456\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "7a3ebda5-fec5-4e50-b670-cb543cfac943",
+            "colId": "d9683828-814b-40c4-a440-6890236c2f14",
+            "containerId": "8ee1411b-9f9a-4d01-a363-fce3d520503f",
+            "name": "Signup",
+            "url": "http://localhost:5000/api/auth/signup",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-05-11T13:07:51.941Z",
+            "modified": "2024-05-11T13:08:52.916Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"fullName\": \"Hero\", \n  \"username\": \"Hero123\",\n  \"password\": \"123456\",\n  \"confirmPassword\": \"123456\",\n  \"gender\": \"male\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "415b12a7-f462-4214-9a9d-a4e9dbd17f86",
+            "colId": "d9683828-814b-40c4-a440-6890236c2f14",
+            "containerId": "ce9524fe-6995-4dc6-b044-18b408ec9a84",
+            "name": "userRoutes",
+            "url": "http://localhost:5000/api/users",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-05-11T13:09:49.498Z",
+            "modified": "2024-05-11T13:10:26.849Z",
+            "headers": []
+        },
+        {
+            "_id": "6123def9-4a08-4c76-b55a-e0895f27e798",
+            "colId": "d9683828-814b-40c4-a440-6890236c2f14",
+            "containerId": "8bd2a295-523a-4e17-9815-505c9c97bcf1",
+            "name": "SendMessage",
+            "url": "http://localhost:5000/api/messages/send/663e80b07af11ac9ccc1c75d",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-05-11T13:10:51.804Z",
+            "modified": "2024-05-11T13:12:01.003Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"message\": \"Hello I'm logged in!\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "abed4a6b-87b5-44e1-9a19-8e8b7330e32a",
+            "colId": "d9683828-814b-40c4-a440-6890236c2f14",
+            "containerId": "8bd2a295-523a-4e17-9815-505c9c97bcf1",
+            "name": "GetMessage",
+            "url": "http://localhost:5000/api/messages/663e80b07af11ac9ccc1c75d",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-05-11T13:11:01.917Z",
+            "modified": "2024-05-11T13:12:56.222Z",
+            "headers": []
+        }
+    ],
+    "ref": "VvOP2P3iIYMcl-W2XfSYAUDnqp-VOqsqpzN6JIJYHXq34RFjVVQFrx3YrXmnfFPr2rFqoBfSx6Icflm8MCsA_Q"
+}

@@ -61,7 +61,7 @@ io.on("connection", (socket) => {
           io.to(socket.id).emit("recipientNotFound", { message: "Recipient not online." });
         } else {
           if (userSocketMap[userId].status === "BUSY" && recipient.status === "BUSY") {
-            // Simulate interaction with Language Model API
+            // Simulate interaction with Language Model API . Didn't get time to integrate real one 
             sendResponseToSender(socket.id, "User is busy. Ask later.");
           } else {
             io.to(recipient.socketId).emit("messageReceived", { senderId: userId, message });

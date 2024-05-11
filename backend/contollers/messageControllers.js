@@ -1,6 +1,6 @@
 import Conversation from "../models/conversationSchema.js";
 import Message from "../models/messageSchema.js";
-// import { getReceiverSocketId, io } from "../socket/socket.js";
+import { getReceiverSocketId, io } from "../socket/socket.js";
 
 export const sendMessage = async (req, res) => {
 	try {
@@ -32,15 +32,17 @@ export const sendMessage = async (req, res) => {
 		// await conversation.save();
 		// await newMessage.save();
 
-		// this will run in parallel
+
+		// This will run in parallel
 		await Promise.all([conversation.save(), newMessage.save()]);
 
+
 		// // SOCKET IO FUNCTIONALITY WILL GO HERE
-		// const receiverSocketId = getReceiverSocketId(receiverId);
-		// if (receiverSocketId) {
-		// 	// io.to(<socket_id>).emit() used to send events to specific client
-		// 	io.to(receiverSocketId).emit("newMessage", newMessage);
-		// }
+		const receiverSocketId = getReceiverSocketId(receiverId);
+		if (receiverSocketId) {
+			// io.to(<socket_id>).emit() used to send events to specific client
+			io.to(receiverSocketId).emit("newMessage", newMessage);
+		}
 
 		res.status(201).json(newMessage);
 	} catch (error) {
@@ -54,6 +56,10 @@ export const getMessages = async (req, res) => {
 		const { id: userToChatId } = req.params;
 		const senderId = req.user._id;
 
+
+		//Check if the sender and the reciever have already made conversation
+		//in past and appending the conversation if they have 
+		//or creating a new if they haven't 
 		const conversation = await Conversation.findOne({
 			participants: { $all: [senderId, userToChatId] },
 		}).populate("messages"); // NOT REFERENCE BUT ACTUAL MESSAGES

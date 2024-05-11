@@ -54,7 +54,6 @@ Explanation of the code and file structure :
 
 2. Routes :
   It consists of 3 files :- 
-
   1. AuthRoutes for Signup , Login and Logout :-
      
                                                  a.router.post("/login" , loginUser)  ; //calls when user will try to login 

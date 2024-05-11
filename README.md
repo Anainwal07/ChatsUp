@@ -19,28 +19,28 @@ The folder are divided into 7 parts :-
 
 1. Server.js : 
 
-  const app = express() ; 
-
-  dotenv.config();  
-  const PORT = process.env.PORT || 5000 ; 
-  
-  app.use(express.json()) ;  //to parse the incoming requests with JSON payloads 
-  app.use(cookieParser()) ;  //to parse the incoming cookies from requests to JSON values 
-  
-  
-  
-  app.use("/api/auth" , authRoutes);  //authRoutes:- signup , login , logout
-  app.use("/api/messages" , messageRoutes) ; //messageRoutes :- sendMessage , getMessage
-  app.use("/api/users" , userRoutes) ;  //to get users from the  DB to reflect on sidebar 
-  
-  
-  
-  
-  //listening to PORT : confirmation
-  app.listen(PORT, () => {
-      connectToMongoDB() ; 
-      console.log(`Server is running on port ${PORT}`) ; 
-  })
+        const app = express() ; 
+      
+        dotenv.config();  
+        const PORT = process.env.PORT || 5000 ; 
+        
+        app.use(express.json()) ;  //to parse the incoming requests with JSON payloads 
+        app.use(cookieParser()) ;  //to parse the incoming cookies from requests to JSON values 
+        
+        
+        
+        app.use("/api/auth" , authRoutes);  //authRoutes:- signup , login , logout
+        app.use("/api/messages" , messageRoutes) ; //messageRoutes :- sendMessage , getMessage
+        app.use("/api/users" , userRoutes) ;  //to get users from the  DB to reflect on sidebar 
+        
+        
+        
+        
+        //listening to PORT : confirmation
+        app.listen(PORT, () => {
+            connectToMongoDB() ; 
+            console.log(`Server is running on port ${PORT}`) ; 
+        })
 
   
   It is the main file of the full backend folder as it is the first file to run whenever we start our backend server .
@@ -53,39 +53,50 @@ The folder are divided into 7 parts :-
 2. Routes :
   It consists of 3 files :- 
 
-  1. AuthRoutes for Signup , Login and Logout :- a.router.post("/login" , loginUser)  ; //calls when user will try to login 
+  1. AuthRoutes for Signup , Login and Logout :-
+  2.                                             a.router.post("/login" , loginUser)  ; //calls when user will try to login 
 
                                                  b.router.post("/signup", singupUser) ; //calls when user will try to signup 
 
                                                  c.router.post("/logout", logoutUser) ; //calls when user will logout
      
-  2. messageRoutes for Sending and receiving messages :- a. router.get("/:id", protectRoute, getMessages)  ;//calls when the user will get any messages from other users
+  3. messageRoutes for Sending and receiving messages :-
+     
+                                                         a. router.get("/:id", protectRoute, getMessages)  ;//calls when the user will get any messages from other users
      
                                                          b. router.post("/send/:id", protectRoute, sendMessage)  ;//calls when the user will send any message to other user
  
-  3. UserRoutes for collecting all the users and displaying their name at the side :- a.  router.get("/", protectRoute, getUsersForSidebar);//calls automatically to get the users from DB , to reflect at the sidebar
+  5. UserRoutes for collecting all the users and displaying their name at the side :-
+     
+                                                         a.  router.get("/", protectRoute, getUsersForSidebar);//calls automatically to get the users from DB , to reflect at the sidebar
 
 
 
 
 3. Controllers :
    It consists of 3 files :- 
-   1. AuthControllers for handling the requests from authRoutes :- a. export const LoginRoutes()
+   1. AuthControllers for handling the requests from authRoutes :-
+      
+                                                                  a. export const LoginRoutes()
                                                                   b. export const SignupRoutes()
                                                                   c. export const LogoutRoutes()
                                                                   
     
-   2. MessageControllers for handling the requests from messageRoutes :- a. export const GetMessage() 
-                                                                         b. export const SendMessage()
+   2. MessageControllers for handling the requests from messageRoutes :-
+      
+                                                            a. export const GetMessage() 
+                                                            b. export const SendMessage()
             
-   3. UserControllers for handling hte requests from userRoutes :- export const getSideBarUsers () 
+   3. UserControllers for handling hte requests from userRoutes :-
+   
+                                                            a . export const getSideBarUsers () 
 
 4. Middleware :
 
-    const protectRoutes = async() => {
-      //validate the user before sending or receiving any message .
-    }
-    export default protectRoute ; 
+        const protectRoutes = async() => {
+          //validate the user before sending or receiving any message .
+        }
+        export default protectRoute ; 
     
     It acts as a wall or bridge bw the routes and the controllers to ensure safety and data Integrity . 
     It consists of a single file i.e protectRoute that will get executed before performing any action like sending or recieving message .

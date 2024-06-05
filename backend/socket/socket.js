@@ -12,6 +12,8 @@ const io = new Server(server, {
 	},
 });
 
+
+//Socket Management
 export const getReceiverSocketId = (receiverId) => {
 	return userSocketMap[receiverId];
 };
@@ -23,6 +25,7 @@ const sendResponseToSender = (senderSocketId, message) => {
   };
   
 
+//Socket EvenListeners
 io.on("connection", (socket) => {
 	console.log("A user connected", socket.id);
 

@@ -33,11 +33,11 @@ export const sendMessage = async (req, res) => {
 		// await newMessage.save();
 
 
-		// This will run in parallel
+		// This will run in parallel , simultaneously
 		await Promise.all([conversation.save(), newMessage.save()]);
 
 
-		// // SOCKET IO FUNCTIONALITY WILL GO HERE
+		// // SOCKET IO FUNCTIONALITY IS HERE
 		const receiverSocketId = getReceiverSocketId(receiverId);
 		if (receiverSocketId) {
 			// io.to(<socket_id>).emit() used to send events to specific client
@@ -62,7 +62,7 @@ export const getMessages = async (req, res) => {
 		//or creating a new if they haven't 
 		const conversation = await Conversation.findOne({
 			participants: { $all: [senderId, userToChatId] },
-		}).populate("messages"); // NOT REFERENCE BUT ACTUAL MESSAGES
+		}).populate("messages"); // NOT REFERENCE BUT ACTUAL MESSAGES WE WILL FETCH
 
 		if (!conversation) return res.status(200).json([]);
 

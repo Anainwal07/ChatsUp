@@ -4,7 +4,7 @@ import { getUsersForSidebar } from "../contollers/userControllers.js";
 
 const router = express.Router();
 
-router.get("/", protectRoute, getUsersForSidebar);//calls automatically to get the users from DB , to reflect at the sidebar
+router.get("/", protectRoute , getUsersForSidebar);//calls automatically to get the users from DB , to reflect at the sidebar
 
 
 

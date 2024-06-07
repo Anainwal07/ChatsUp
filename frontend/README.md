@@ -1,8 +1,14 @@
-# React + Vite
+Started frontend Code
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Day 1 :-
 
-Currently, two official plugins are available:
+installed vite using npm vite@latest
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+install tailwindcss
+
+Using DaisyUi for styles
+
+created the Login and the
+SignuP forms
+
+Installed react-icons

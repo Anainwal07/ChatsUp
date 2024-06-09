@@ -1,3 +1,12 @@
+import React from 'react'
+
+const Message = () => {
+  return (
+    <div>Message</div>
+  )
+}
+
+export default Message ; 
 // import { useAuthContext } from "../../context/AuthContext";
 // import { extractTime } from "../../utils/extractTime";
 // import useConversation from "../../zustand/useConversation";

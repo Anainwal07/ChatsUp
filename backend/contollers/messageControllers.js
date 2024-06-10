@@ -28,16 +28,13 @@ export const sendMessage = async (req, res) => {
 			conversation.messages.push(newMessage._id);
 		}
 
-        //we can use this also but it will not run in parallel
 		// await conversation.save();
 		// await newMessage.save();
 
-
-		// This will run in parallel , simultaneously
+		// this will run in parallel
 		await Promise.all([conversation.save(), newMessage.save()]);
 
-
-		// // SOCKET IO FUNCTIONALITY IS HERE
+		// SOCKET IO FUNCTIONALITY WILL GO HERE
 		const receiverSocketId = getReceiverSocketId(receiverId);
 		if (receiverSocketId) {
 			// io.to(<socket_id>).emit() used to send events to specific client
@@ -56,13 +53,9 @@ export const getMessages = async (req, res) => {
 		const { id: userToChatId } = req.params;
 		const senderId = req.user._id;
 
-
-		//Check if the sender and the reciever have already made conversation
-		//in past and appending the conversation if they have 
-		//or creating a new if they haven't 
 		const conversation = await Conversation.findOne({
 			participants: { $all: [senderId, userToChatId] },
-		}).populate("messages"); // NOT REFERENCE BUT ACTUAL MESSAGES WE WILL FETCH
+		}).populate("messages"); // NOT REFERENCE BUT ACTUAL MESSAGES
 
 		if (!conversation) return res.status(200).json([]);
 

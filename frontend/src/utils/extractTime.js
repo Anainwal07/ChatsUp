@@ -1,3 +1,5 @@
+//this function I got from ChatGPT
+
 export function extractTime(dateString) {
 	const date = new Date(dateString);
 	const hours = padZero(date.getHours());

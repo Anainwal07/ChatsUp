@@ -9,7 +9,7 @@ export const singupUser = async (req, res) => {
 		const { fullName, username, password, confirmPassword, gender } = req.body;
 
 		if (password !== confirmPassword) {
-			return res.status(400).json({ error: "Passwords doesn't match" });
+			return res.status(400).json({ error: "Passwords don't match" });
 		}
 
 		const user = await User.findOne({ username });
@@ -18,16 +18,14 @@ export const singupUser = async (req, res) => {
 			return res.status(400).json({ error: "Username already exists" });
 		}
 
-
 		// HASH PASSWORD HERE
 		const salt = await bcrypt.genSalt(10);
 		const hashedPassword = await bcrypt.hash(password, salt);
 
-		//to download or use free avatars use the side below: 
 		// https://avatar-placeholder.iran.liara.run/
 
-		const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;//for boys 
-		const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;//for girls 
+		const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
+		const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
 		const newUser = new User({
 			fullName,
@@ -57,8 +55,6 @@ export const singupUser = async (req, res) => {
 	}
 };
 
-
-//for login
 export const loginUser = async (req, res) => {
 	try {
 		const { username, password } = req.body;
@@ -69,7 +65,7 @@ export const loginUser = async (req, res) => {
 			return res.status(400).json({ error: "Invalid username or password" });
 		}
 
-		generateTokenAndSetCookie(user._id, res);//generating tokens from the cookies
+		generateTokenAndSetCookie(user._id, res);
 
 		res.status(200).json({
 			_id: user._id,
@@ -83,9 +79,6 @@ export const loginUser = async (req, res) => {
 	}
 };
 
-
-
-//for logging out
 export const logoutUser = (req, res) => {
 	try {
 		res.cookie("jwt", "", { maxAge: 0 });

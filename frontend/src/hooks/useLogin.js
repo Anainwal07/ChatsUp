@@ -8,11 +8,8 @@ const useLogin = () => {
 
 	const login = async (username, password) => {
 		const success = handleInputErrors(username, password);
-		
-        if (!success) return;
-		
-        setLoading(true);
-
+		if (!success) return;
+		setLoading(true);
 		try {
 			const res = await fetch("/api/auth/login", {
 				method: "POST",
@@ -27,14 +24,9 @@ const useLogin = () => {
 
 			localStorage.setItem("chat-user", JSON.stringify(data));
 			setAuthUser(data);
-		
-        } 
-        
-        catch (error) {
+		} catch (error) {
 			toast.error(error.message);
-		} 
-        
-        finally {
+		} finally {
 			setLoading(false);
 		}
 	};
